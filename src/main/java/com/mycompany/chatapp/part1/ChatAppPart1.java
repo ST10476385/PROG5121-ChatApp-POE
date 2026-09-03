@@ -17,7 +17,7 @@ public class ChatAppPart1 {
         Login login = new Login();
  
         //Starting off with registration, asking for all the details one at a time
-        // so it's easier to follow what's happening.
+        // so it's easier to follow what's happening..
        
         System.out.println("=== Registration ===");
         System.out.print("Enter a username (must contain _ and be 5 characters or less): ");

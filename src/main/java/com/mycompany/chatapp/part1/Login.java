@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
   // and then lets them log back in with the same details. I kept everything in one class since the
 //assignment said to make a Login class with all these methods in it.
 
-public class Login {
+public class Login {  // This class handles all registration and login functionality
  
     // These are the details for the person once they've registered, I made them private because I only
      //want them changed through my methods, not just from anywhere.
