@@ -12,7 +12,7 @@ public class ChatAppPart1 {
 
     public static void main(String[] args) {
        
-        Scanner scanner = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
        
         Login login = new Login();
  
@@ -21,19 +21,19 @@ public class ChatAppPart1 {
        
         System.out.println("=== Registration ===");
         System.out.print("Enter a username (must contain _ and be 5 characters or less): ");
-        String username = scanner.nextLine();
+        String username = input.nextLine();
  
         System.out.print("Enter a password (8+ characters, a capital letter, a number and a special character): ");
-        String password = scanner.nextLine();
- // @citation: Stack Overflow. (2026) Regular expression to match South African cell phone numbers. Available at: https://stackoverflow.com/questions/16699007/ (Accessed: 20 August 2026).
+        String password = input.nextLine();
+ 
         System.out.print("Enter your cell number (with country code, example +27614880723): ");
-        String cellNumber = scanner.nextLine();
+        String cellNumber = input.nextLine();
  
        
         System.out.print("Enter your first name: ");
-        String firstName = scanner.nextLine();
+        String firstName = input.nextLine();
         System.out.print("Enter your last name: ");
-        String lastName = scanner.nextLine();
+        String lastName = input.nextLine();
  
         //RegisterUser() does all the checking for me and just gives back message
         // saying what's wrong or that it worked, so I just print whatever it returns.
@@ -49,16 +49,16 @@ public class ChatAppPart1 {
             System.out.println("=== Login ===");
  
             System.out.print("Enter your username: ");
-            String loginUsername = scanner.nextLine();
+            String loginUsername = input.nextLine();
  
             System.out.print("Enter your password: ");
-            String loginPassword = scanner.nextLine();
+            String loginPassword = input.nextLine();
  
             login.loginUser(loginUsername, loginPassword);
             System.out.println(login.returnLoginStatus());
         }
        
  
-        scanner.close();
+        input.close();
     }
 }
