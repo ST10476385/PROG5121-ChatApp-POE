@@ -41,7 +41,7 @@ public class ChatAppPart1 {
         System.out.println(registerResult);
  
         //It only move on to login if registration actually succeeded, checking the start of the message
-        //since that's the easiest way to tell if it went through without adding another return type.
+        // since that's the easiest way to tell if it went through without adding another return type.
        
         if (registerResult.startsWith("Username successfully captured")) {
             System.out.println();
@@ -60,5 +60,6 @@ public class ChatAppPart1 {
        
  
         input.close();
+        
     }
 }
