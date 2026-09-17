@@ -17,10 +17,10 @@ public class ChatAppPart1 {
         Login login = new Login();
  
         //Starting off with registration, asking for all the details one at a time
-        // so it's easier to follow what's happening.
+        //so it's easier to follow what's happening.
        
         System.out.println("=== Registration ===");
-        System.out.print("Enter a username (must contain _ and be 5 characters or less): ");
+        System.out.print("Enter a username ( must contain _ and be 5 characters or less): ");
         String username = input.nextLine();
  
         System.out.print("Enter a password (8+ characters, a capital letter, a number and a special character): ");
@@ -41,7 +41,7 @@ public class ChatAppPart1 {
         System.out.println(registerResult);
  
         //It only move on to login if registration actually succeeded, checking the start of the message
-        // since that's the easiest way to tell if it went through without adding another return type.
+        //since that's the easiest way to tell if it went through without adding another return type.
        
         if (registerResult.startsWith("Username successfully captured")) {
             System.out.println();
