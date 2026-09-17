@@ -17,7 +17,7 @@ public class ChatAppPart1 {
         Login login = new Login();
  
         //Starting off with registration, asking for all the details one at a time
-        // so it's easier to follow what's happening..
+        // so it's easier to follow what's happening.
        
         System.out.println("=== Registration ===");
         System.out.print("Enter a username (must contain _ and be 5 characters or less): ");
@@ -36,12 +36,12 @@ public class ChatAppPart1 {
         String lastName = input.nextLine();
  
         //RegisterUser() does all the checking for me and just gives back message
-        // saying what's wrong or that it worked, so I just print whatever it returns.
+        //saying what's wrong or that it worked, so I just print whatever it returns.
         String registerResult = login.registerUser(username, password, cellNumber, firstName, lastName);
         System.out.println(registerResult);
  
         //It only move on to login if registration actually succeeded, checking the start of the message
-        // since that's the easiest way to tell if it went through without adding another return type.
+        //since that's the easiest way to tell if it went through without adding another return type.
        
         if (registerResult.startsWith("Username successfully captured")) {
             System.out.println();
