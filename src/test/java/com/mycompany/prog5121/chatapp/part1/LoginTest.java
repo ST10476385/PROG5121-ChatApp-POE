@@ -4,16 +4,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
 package com.mycompany.prog5121.chatapp.part1;
-
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.junit.jupiter.api.Test;
 
 /**
- * Unit tests for Part 1 – Registration and Login.
+ * Unit tests for Part 1 and Registration and Login.
  * 
  *
  * @author ST10476385 KN SHIKWAMBANA
@@ -26,9 +21,12 @@ public class LoginTest {
     @Test
     public void testUsernameCorrectlyFormatted_Flow() {
         Login login = new Login();
+        
         String regMsg = login.registerUser("kyl_1", "Ch&&sec@ke99!", "+27838968976", "John", "Doe");
+        
         assertEquals("Username successfully captured. Password successfully captured. Cell phone number successfully added.", regMsg);
         assertTrue(login.loginUser("kyl_1", "Ch&&sec@ke99!"));
+        
         assertEquals("Welcome John, Doe it is great to see you again.", login.returnLoginStatus());
     }
 
@@ -151,7 +149,7 @@ public class LoginTest {
         
     }
 
-    // Cell phone correctly formatted (+27838968976) :  true
+    // Cell phone correctly formatted (+27838968976) -> true
     @Test
     public void testCellPhoneCorrectlyFormatted_Boolean() {
         Login login = new Login();
@@ -160,7 +158,7 @@ public class LoginTest {
         
     }
 
-    // Cell phone incorrectly formatted (08966553) :  false
+    // Cell phone incorrectly formatted (08966553) -> false
     @Test
     public void testCellPhoneIncorrectlyFormatted_Boolean() {
         Login login = new Login();
