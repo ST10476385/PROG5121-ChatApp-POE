@@ -32,22 +32,29 @@ public class Login {
     }
 
     //It checks if the username has an underscore in it somewhere and isn't longer than 5 characters.
-    // I used .contains() to check for the underscore because it's the easiest way to check if a character is
-    //anywhere in a string.
+    // I used .contains() to check for the underscore because it's the easiest way to check if a character is anywhere in a string.
+   
     public boolean checkUserName(String username) {
+        
         if (username == null)
         {
             // I Added this check because if someone passes in null it would crash on .contains(),
-            // rather just say it's not valid.
+            //                  rather just say it's not valid.
             return false;
         }
         return username.contains("_") && username.length() <= 5;
+        
+        
+        
+        
+        
     }
 
     //This checks the password has 8+ characters, a capital letter, a number and a special character in it.
-    //I used regex for this because trying to do it with if statements and loops would have been way longer.
+    //   I used regex for this because trying to do it with if statements and loops would have been way longer.
     public boolean checkPasswordComplexity(String password) {
         if (password == null) {
+            
             return false;
         }
         //Regex idea for this one is referenced in the README, changed it around a bit to fit what the assignmnent
@@ -58,12 +65,15 @@ public class Login {
 
     // checks the cell number starts with +27 (SA country code) and that
     // whatever comes after that isn't more than 10 digits. I used the same
-    // Pattern.matches() approach as the password check above since it
-    // already worked there.
+    // Pattern.matches() approach as the password check above since it already worked there.
+    
     public boolean checkCellPhoneNumber(String cellPhoneNumber) {
         if (cellPhoneNumber == null) {
             return false;
         }
+        
+        
+        
         // @citation: GeeksforGeeks. (2026) Regular Expressions in Java. Available at: https://www.geeksforgeeks.org/regular-expressions-in-java/ (Accessed: 20 August 2026).
         // Regex idea for this one is also referenced in the README, edited down to just SA numbers with the +27 code.
         String cellPattern = "^\\+27[0-9]{1,10}$";
@@ -79,6 +89,8 @@ public class Login {
             return "Username is not correctly formatted; please ensure that your username "
                     +"contains an underscore and is no more than five characters in length.";
         }
+        
+        
 
         if (!checkPasswordComplexity(password)) {
             return "Password is not correctly formatted; please ensure that the password "
@@ -89,8 +101,10 @@ public class Login {
             return "Cell phone number is incorrectly formatted or does not contain an "
                     +"international code; please correct the number and try again.";
         }
+        
+        
 
-        //It only gets here if all 3 checks passed, so now it's safe to actually save the details to the fields.
+        // It only gets here if all 3 checks passed, so now it's safe to actually save the details to the fields.
         this.username = username;
         this.password = password;
         this.cellPhoneNumber = cellPhoneNumber;
@@ -101,27 +115,41 @@ public class Login {
     }
 
     //It checks whatever was typed in at login matches what got saved when the person registered.
-    //Used .equals() instead of == because that's how we are supposed to compare Strings in Java,
-    //== compares references not the actual text.
+    //Used .equals() instead of == because that's how we are supposed to compare Strings in Java,== compares references not the actual text.
+    
+    
+  
     public boolean loginUser(String enteredUsername, String enteredPassword) {
+        
+        
         if (username == null || password == null) {
-            //this means nobody has registered yet so there's nothing to log into.
+            
+            
+            
+            //    this means nobody has registered yet so there's nothing to log into.
             loginSuccessful = false;
             return false;
         }
 
+        
+        
         loginSuccessful = username.equals(enteredUsername) && password.equals(enteredPassword);
         return loginSuccessful;
     }
 
-    //Tust sends back whichever message matches the last login attempt, used the boolean
+    //   Tust sends back whichever message matches the last login attempt, used the boolean
     // I set in loginUser() so I didn't have to redo the whole check again in here.
     public String returnLoginStatus() {
         if (loginSuccessful) {
             return "Welcome " + firstName + ", " + lastName + " it is great to see you again.";
         }
-        else
-        {
+        
+        
+        
+        
+        else{
+            
+            
             return "Username or password incorrect, please try again.";
         }
     }
@@ -129,16 +157,30 @@ public class Login {
     //This just returns whether the last login was successful or not,
     //so main can decide whether to show the QuickChat menu or not.
     public boolean isLoggedIn() {
+        
+        
         return loginSuccessful;
     }
 
+    
+    
     //I added these getters so Main can grab the name if it needs to print it somewhere else.
     public String getFirstName() {
+        
+        
         return firstName;
     }
 
     public String getLastName()
+            
+            
     {
+        
         return lastName;
+        
     }
+    
+    
+    
 }
+

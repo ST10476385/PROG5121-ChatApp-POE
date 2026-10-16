@@ -34,16 +34,24 @@ public class Message {
     private static int messageCounter = -1;
 
     //I'm keeping all the messages in this string so printMessages() can show them
-    //all at the end of the program run.
+    //          all at the end of the program run.
     private static String allMessages = "";
 
     public Message(String recipient, String messageText) {
+        
+        
+        
         //I make the ID first because the hash needs it.
         this.messageID = generateMessageID();
+        
+        
+        
         //messageNumber only goes up each time a new Message is made.
         this.messageNumber = ++messageCounter;
         this.recipient = recipient;
         this.messageText = messageText;
+        
+        
         //The hash is made last because it needs everything else.
         this.messageHash = createMessageHash();
     }
@@ -51,9 +59,15 @@ public class Message {
     //I made this method to generate the 10-digit random number. I used Random
     //and a loop that adds one digit at a time until I have 10 digits.
     private String generateMessageID() {
+        
+        
         Random random = new Random();
         String id = "";
+        
+        
         for (int i = 0; i < 10; i++) {
+            
+            
             id = id + random.nextInt(10);
         }
         return id;
@@ -61,8 +75,13 @@ public class Message {
 
     //This just checks the ID isn't longer than 10 characters.
     //It should never fail because generateMessageID() always makes exactly 10.
-    public boolean checkMessageID() {
-        if (messageID == null) {
+    public boolean checkMessageID()
+    {
+        if (messageID == null)
+        
+        {
+            
+            
             return false;
         }
         return messageID.length() <= 10;
@@ -71,13 +90,17 @@ public class Message {
     //This checks the recipient number. It needs to start with the SA international
     //code (+27) and the digits after that can't be more than 10.
     // @citation: Stack Overflow. (2026) Regular expression to match South African cell phone numbers. Available at: https://stackoverflow.com/questions/16699007/ (Accessed: 20 August 2026).
-    public String checkRecipientCell() {
+    public String checkRecipientCell()
+    {
         if (recipient == null) {
             return "Cell phone number is incorrectly formatted or does not contain an international code. Please correct the number and try again.";
         }
         //The pattern is +27 followed by 1 to 10 digits.
         String cellPattern = "^\\+27[0-9]{1,10}$";
-        if (Pattern.matches(cellPattern, recipient)) {
+        
+        if (Pattern.matches(cellPattern, recipient)) 
+        
+        {
             return "Cell phone number successfully captured.";
         } else {
             return "Cell phone number is incorrectly formatted or does not contain an international code. Please correct the number and try again.";
@@ -96,10 +119,10 @@ public class Message {
         //I take just the first 2 characters of the ID using substring.
         String firstTwo = messageID.substring(0, 2);
 
-        //The message number as a string.
+        //   The message number as a string.
         String numberPart = String.valueOf(messageNumber);
 
-        //I split the message into words so I can grab the first and last ones.
+        //   I split the message into words so I can grab the first and last ones.
         String[] words = messageText.trim().split("\\s+");
         String firstWord = words[0];
         String lastWord = words[words.length - 1];
@@ -114,19 +137,24 @@ public class Message {
         return hash.toUpperCase();
     }
 
-    //This lets the user pick if they want to send, store, or disregard the message.
-    //1 = send, 2 = disregard, 3 = store for later.
+    //This lets the user pick if they want to send, store, or disregard the message.1 = send, 2 = disregard, 3 = store for later.
+   
     public String sentMessage(int choice) {
 
         if (choice == 1) {
             //Only add to the total when the user actually sends it.
             totalMessagesSent++;
             storeMessage();
+            
             return "Message successfully sent.";
-        } else if (choice == 2) {
+        } else if (choice == 2)
+        {
+            
             return "Press 0 to delete the message.";
-        } else if (choice == 3) {
+        } else if (choice == 3)
+        {
             storeMessage();
+            
             return "Message successfully stored.";
         } else {
             return "Invalid option.";
@@ -134,8 +162,10 @@ public class Message {
     }
 
     //This returns all the messages that were sent during the program run.
-    public static String printMessages() {
-        if (allMessages.equals("")) {
+    public static String printMessages() 
+    {
+        if (allMessages.equals("")) 
+        {
             return "No messages sent yet.";
         }
         return allMessages;
@@ -148,7 +178,7 @@ public class Message {
 
     //I researched how to store messages in a JSON file. I'm building the JSON
     //text myself and writing it to a file with FileWriter.
-    // @citation: Oracle. (2026) Java FileWriter Documentation. Available at: https://docs.oracle.com/javase/8/docs/api/java/io/FileWriter.html (Accessed: 10 October 2026).
+    //        @citation: Oracle. (2026) Java FileWriter Documentation. Available at: https://docs.oracle.com/javase/8/docs/api/java/io/FileWriter.html (Accessed: 10 October 2026).
     // @citation: W3Schools. (2026) JSON Syntax. Available at: https://www.w3schools.com/js/js_json_syntax.asp (Accessed: 10 October 2026).
     public void storeMessage() {
 
@@ -185,7 +215,9 @@ public class Message {
         return messageID;
     }
 
-    public int getMessageNumber() {
+    public int getMessageNumber()
+    
+    {
         return messageNumber;
     }
 
@@ -197,7 +229,9 @@ public class Message {
         return messageText;
     }
 
-    public String getMessageHash() {
+    public String getMessageHash()
+    
+    {
         return messageHash;
     }
 

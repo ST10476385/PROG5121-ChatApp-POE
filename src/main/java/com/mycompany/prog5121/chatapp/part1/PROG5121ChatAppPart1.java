@@ -16,8 +16,8 @@ public class PROG5121ChatAppPart1 {
         Scanner input = new Scanner(System.in);
         Login login = new Login();
 
-        //Starting off with registration, asking for all the details one at a time
-        //so it's easier to follow what's happening.
+        //Starting off with registration, asking for all the details one at a time so it's easier to follow what's happening.
+        
         System.out.println("=== Registration ===");
         System.out.print("Enter a username ( must contain _ and be 5 characters or less): ");
         String username = input.nextLine();
@@ -65,7 +65,8 @@ public class PROG5121ChatAppPart1 {
                 //This boolean keeps the menu running until the user picks quit.
                 boolean running = true;
 
-                while (running) {
+                while (running)
+                {
 
                     System.out.println();
                     System.out.println("--- Menu ---");
@@ -86,26 +87,34 @@ public class PROG5121ChatAppPart1 {
                         continue;
                     }
 
-                    if (menuChoice == 1) {
+                    if (menuChoice == 1)
+                    {
                         //This is where the send messages feature lives.
                         sendMessages(input);
-                    } else if (menuChoice == 2) {
+                    } else if (menuChoice == 2) 
+                    {
                         System.out.println("Coming Soon.");
-                    } else if (menuChoice == 3) {
+                    } else if (menuChoice == 3) 
+                    {
                         System.out.println("Goodbye!");
                         running = false;
-                    } else {
+                    } else 
+                    {
                         System.out.println("Invalid option. Please choose 1, 2 or 3.");
                     }
                 }
+                
+                
             }
         }
+        
+        
 
         input.close();
     }
 
-    //This method runs the whole send messages flow. I made it separate so main
-    //doesn't get too long and it's easier to read.
+    //This method runs the whole send messages flow. I made it separate so main doesn't get too long and it's easier to read.
+    
     private static void sendMessages(Scanner input) {
 
         //First thing is to ask how many messages they want to send.
@@ -126,17 +135,20 @@ public class PROG5121ChatAppPart1 {
         }
 
         //This is the for loop that runs once for each message they wanted to send.
-        for (int i = 0; i < numMessages; i++) {
+        for (int i = 0; i < numMessages; i++) 
+        {
 
             System.out.println();
             System.out.println("--- Message " + (i + 1) + " of " + numMessages + " ---");
 
-            // -------- Get the recipient --------
+            // -Get the recipient-
             //I keep asking until the number passes the check, so nobody gets past with a bad number.
             String recipient = "";
             boolean recipientOk = false;
 
-            while (!recipientOk) {
+            while (!recipientOk) 
+            
+            {
                 System.out.print("Enter recipient cell number (with international code, example +27718693002): ");
                 recipient = input.nextLine();
 
@@ -145,7 +157,8 @@ public class PROG5121ChatAppPart1 {
                 String checkResult = tempMessage.checkRecipientCell();
                 System.out.println(checkResult);
 
-                if (checkResult.equals("Cell phone number successfully captured.")) {
+                if (checkResult.equals("Cell phone number successfully captured.")) 
+                {
                     recipientOk = true;
                 }
             }
@@ -155,11 +168,15 @@ public class PROG5121ChatAppPart1 {
             String messageText = "";
             boolean messageOk = false;
 
-            while (!messageOk) {
+            while (!messageOk) 
+            
+            
+            {
                 System.out.print("Enter your message (max 250 characters): ");
                 messageText = input.nextLine();
 
-                if (messageText.length() > 250) {
+                if (messageText.length() > 250) 
+                {
                     //I work out how many characters over they are so the error is specific.
                     int excess = messageText.length() - 250;
                     System.out.println("Message exceeds 250 characters by " + excess + "; please reduce the size.");
@@ -169,7 +186,7 @@ public class PROG5121ChatAppPart1 {
                 }
             }
 
-            // -------- Make the actual Message object --------
+            // ----------------------- Make the actual Message object --------
             Message msg = new Message(recipient, messageText);
 
             //Show all the details in the order the assignment asked for:
@@ -178,7 +195,7 @@ public class PROG5121ChatAppPart1 {
             System.out.println("--- Message Details ---");
             System.out.println(msg.displayMessageDetails());
 
-            // -------- Ask what to do with it --------
+            // -------- Ask what to do with it ----------------------
             System.out.println();
             System.out.println("What would you like to do?");
             System.out.println("1) Send Message");
@@ -196,7 +213,7 @@ public class PROG5121ChatAppPart1 {
                 continue;
             }
 
-            //FIXED: was sendMessage before, now it matches the method in Message.java
+            
             String sendResult = msg.sentMessage(sendChoice);
             System.out.println(sendResult);
         }
@@ -209,5 +226,6 @@ public class PROG5121ChatAppPart1 {
         System.out.println();
         System.out.println("--- All Messages Sent ---");
         System.out.println(Message.printMessages());
+   
     }
 }
