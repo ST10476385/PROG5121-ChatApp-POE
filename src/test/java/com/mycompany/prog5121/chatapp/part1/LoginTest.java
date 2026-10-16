@@ -7,7 +7,6 @@ package com.mycompany.prog5121.chatapp.part1;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -152,7 +151,7 @@ public class LoginTest {
         
     }
 
-    // Cell phone correctly formatted (+27838968976) -> true
+    // Cell phone correctly formatted (+27838968976) :  true
     @Test
     public void testCellPhoneCorrectlyFormatted_Boolean() {
         Login login = new Login();
@@ -161,7 +160,7 @@ public class LoginTest {
         
     }
 
-    // Cell phone incorrectly formatted (08966553) -> false
+    // Cell phone incorrectly formatted (08966553) :  false
     @Test
     public void testCellPhoneIncorrectlyFormatted_Boolean() {
         Login login = new Login();
